@@ -70,12 +70,18 @@ type AdminUser2 = {
 };
 
 type AdminUser3 = {
-  type: "admin2";
+  type: "admin3";
   name: string;
   access: "read-admin";
 };
 
-type User2 = AdminUser2 | StandardUser2 | AdminUser3;
+type AdminUser4 = {
+  type: "admin4";
+  name: string;
+  access: "read-admin";
+};
+
+type User2 = AdminUser2 | StandardUser2 | AdminUser3 | AdminUser4;
 
 function login2(user: User2) {
   switch (user.type) {
@@ -86,7 +92,7 @@ function login2(user: User2) {
     case "admin":
       getAdminSessionToken(user.name, user.access);
       break;
-    case "admin2":
+    case "admin3":
       getAdminSessionToken(user.name, user.access);
       break;
     default:
